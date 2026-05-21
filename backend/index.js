@@ -8,20 +8,10 @@ import { v4 as uuidv4 } from "uuid";
 
 const app = express();
 const server = http.createServer(app);
-//const io = new Server(server, {
-  //cors: {
-   // origin: "*", // Or your frontend domain
-   // methods: ["GET", "POST"]
- // }
-//});
 const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "https://real-time-code-compiler-frontend.vercel.app"
-    ],
-    methods: ["GET", "POST"],
-    credentials: true
+    origin: "*", // Or your frontend domain
+    methods: ["GET", "POST"]
   }
 });
 
@@ -123,7 +113,7 @@ io.on("connection", (socket) => {
   socket.on("join", ({ roomId, userName }) => {
     if (currentRoom) {
       socket.leave(currentRoom);
-      rooms.get(currentRoom).users.delete(currentUser);
+      rooms.get(currentRoom).delete(currentUser);
       io.to(currentRoom).emit("userJoined", Array.from(rooms.get(currentRoom).users));
     }
 
