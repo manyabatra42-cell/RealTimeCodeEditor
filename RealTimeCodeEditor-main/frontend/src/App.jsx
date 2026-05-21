@@ -6,8 +6,8 @@ import "./App.css";
 // const socket = io("https://realtimecodeseditor.onrender.com");
 
 // const socket = io("https://realtimecode-backend.up.railway.app");
-const socket = io("https://realtimecodeeditor-production-c891.up.railway.app");
-
+//const socket = io("https://realtimecodeeditor-production-c891.up.railway.app");
+const socket = io("https://realtimecodeeditor-production-7d63.up.railway.app");
 
 
 const App = () => {
